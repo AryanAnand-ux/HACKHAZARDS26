@@ -275,6 +275,85 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
+      {Platform.OS === 'web' && (
+        <style dangerouslySetInnerHTML={{__html: `
+          @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+          * {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+          }
+          body {
+            background-color: #080C14 !important;
+            margin: 0;
+            padding: 0;
+          }
+          .glass-card {
+            background: rgba(22, 27, 46, 0.75) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.45) !important;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
+          }
+          .alert-hover {
+            border-color: rgba(244, 63, 94, 0.3) !important;
+          }
+          .alert-hover:hover {
+            box-shadow: 0 16px 40px rgba(244, 63, 94, 0.25) !important;
+          }
+          .info-hover {
+            border-color: rgba(16, 185, 129, 0.3) !important;
+          }
+          .info-hover:hover {
+            box-shadow: 0 16px 40px rgba(16, 185, 129, 0.25) !important;
+          }
+          .btn-glow {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .btn-glow:hover {
+            filter: brightness(1.2);
+            transform: translateY(-1px);
+            box-shadow: 0 0 18px rgba(16, 185, 129, 0.45);
+          }
+          .btn-glow:active {
+            transform: translateY(1px);
+          }
+          .mock-btn-glow {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .mock-btn-glow:hover {
+            filter: brightness(1.15);
+            transform: translateY(-1px);
+            box-shadow: 0 0 15px rgba(100, 116, 139, 0.4);
+          }
+          @keyframes scanLaser {
+            0% { top: 0%; opacity: 0.8; }
+            50% { top: 100%; opacity: 0.8; }
+            100% { top: 0%; opacity: 0.8; }
+          }
+          .laser-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #10B981;
+            box-shadow: 0 0 8px #10B981, 0 0 15px #10B981;
+            animation: scanLaser 3s infinite linear;
+            z-index: 10;
+          }
+          .pulse-record {
+            animation: pulseRecord 1.5s infinite ease-in-out;
+          }
+          @keyframes pulseRecord {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+        `}} />
+      )}
       <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -294,12 +373,18 @@ export default function App() {
         {activeTab === 'dashboard' && (
           <View style={styles.tabContent}>
             {/* Compliance Gauge Card */}
-            <View style={styles.card}>
+            <View style={styles.card} className="glass-card">
               <Text style={styles.cardTitle}>Global Fleet Compliance</Text>
               <View style={styles.gaugeContainer}>
                 <Svg width="180" height="100" viewBox="0 0 100 50">
+                  <defs>
+                    <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#10B981" />
+                      <stop offset="100%" stopColor="#06B6D4" />
+                    </linearGradient>
+                  </defs>
                   <Circle cx="50" cy="50" r="40" stroke="#1E293B" strokeWidth="10" fill="none" strokeDasharray="125 250" />
-                  <Circle cx="50" cy="50" r="40" stroke="#10B981" strokeWidth="10" fill="none" strokeDasharray="100 250" />
+                  <Circle cx="50" cy="50" r="40" stroke="url(#gaugeGrad)" strokeWidth="10" fill="none" strokeDasharray="100 250" />
                 </Svg>
                 <View style={styles.gaugeTextContainer}>
                   <Text style={styles.gaugeNumber}>84%</Text>
@@ -322,7 +407,7 @@ export default function App() {
             {/* Warning Feeds */}
             <Text style={styles.sectionTitle}>High-Risk Supply Alerts</Text>
             
-            <View style={[styles.card, styles.alertCard]}>
+            <View style={[styles.card, styles.alertCard]} className="glass-card alert-hover">
               <AlertTriangle color="#EF4444" size={24} />
               <View style={styles.alertTextContainer}>
                 <Text style={styles.alertTitle}>Tier-3 Materials Breach</Text>
@@ -330,7 +415,7 @@ export default function App() {
               </View>
             </View>
 
-            <View style={[styles.card, styles.infoCard]}>
+            <View style={[styles.card, styles.infoCard]} className="glass-card info-hover">
               <CheckCircle color="#10B981" size={24} />
               <View style={styles.alertTextContainer}>
                 <Text style={[styles.alertTitle, { color: '#10B981' }]}>Audit Complete: Ningbo Co</Text>
@@ -346,16 +431,17 @@ export default function App() {
             <Text style={styles.sectionDesc}>Capture container manifests or Bills of Lading to automatically run risk resolution.</Text>
 
             {/* Simulated Camera Viewfinder */}
-            <View style={styles.cameraBox}>
+            <View style={styles.cameraBox} className="glass-card">
+              {Platform.OS === 'web' && <View className="laser-line" />}
               <FileText color="#94A3B8" size={64} />
               <Text style={styles.cameraText}>Manifest Scanner Active</Text>
               
               <View style={styles.scanActions}>
-                <TouchableOpacity style={styles.actionBtn} onPress={() => handleScan(false)}>
+                <TouchableOpacity style={styles.actionBtn} className="btn-glow" onPress={() => handleScan(false)}>
                   <Scan color="#FFFFFF" size={20} />
                   <Text style={styles.actionBtnText}>Scan Document</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.actionBtn, styles.mockBtn]} onPress={() => handleScan(true)}>
+                <TouchableOpacity style={[styles.actionBtn, styles.mockBtn]} className="mock-btn-glow" onPress={() => handleScan(true)}>
                   <RotateCcw color="#FFFFFF" size={18} />
                   <Text style={styles.actionBtnText}>Simulate Scan</Text>
                 </TouchableOpacity>
@@ -370,7 +456,7 @@ export default function App() {
             )}
 
             {scannedData && (
-              <View style={styles.card}>
+              <View style={styles.card} className="glass-card">
                 <Text style={styles.cardTitle}>Parsed Manifest Data</Text>
                 <View style={styles.metaRow}><Text style={styles.metaLabel}>Supplier:</Text><Text style={styles.metaVal}>{scannedData.companyName}</Text></View>
                 <View style={styles.metaRow}><Text style={styles.metaLabel}>Reg No:</Text><Text style={styles.metaVal}>{scannedData.registrationNo}</Text></View>
@@ -400,7 +486,7 @@ export default function App() {
             <Text style={styles.sectionTitle}>Interactive Risk Network</Text>
             <Text style={styles.sectionDesc}>Visualizing multi-hop supplier dependencies mapped in Neo4j AuraDB.</Text>
 
-            <View style={styles.graphBox}>
+            <View style={styles.graphBox} className="glass-card">
               <Svg height="300" width={width - 32}>
                 {/* Links */}
                 {graphData.links.map((link: any, idx: number) => {
@@ -449,7 +535,7 @@ export default function App() {
               </Svg>
             </View>
 
-            <View style={styles.card}>
+            <View style={styles.card} className="glass-card">
               <Text style={styles.cardTitle}>Graph Legend</Text>
               <View style={styles.legendRow}>
                 <View style={[styles.legendDot, { backgroundColor: '#EF4444' }]} />
@@ -472,8 +558,10 @@ export default function App() {
             <Text style={styles.sectionTitle}>Worker Interview</Text>
             <Text style={styles.sectionDesc}>Record workers testimonies. Sarvam AI translates local statements into English compliance proof.</Text>
 
-            <View style={styles.recordBox}>
-              <Mic color={isRecording ? '#EF4444' : '#10B981'} size={64} />
+            <View style={styles.recordBox} className="glass-card">
+              <View className={isRecording ? "pulse-record" : ""}>
+                <Mic color={isRecording ? '#EF4444' : '#10B981'} size={64} />
+              </View>
               
               <Text style={styles.recordText}>
                 {isRecording ? 'Recording Audio...' : 'Ready to Record'}
@@ -481,11 +569,11 @@ export default function App() {
 
               <View style={styles.recordActions}>
                 {!isRecording ? (
-                  <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#10B981' }]} onPress={startRecording}>
+                  <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#10B981' }]} className="btn-glow" onPress={startRecording}>
                     <Text style={styles.actionBtnText}>Start Recording</Text>
                   </TouchableOpacity>
                 ) : (
-                  <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#EF4444' }]} onPress={stopRecording}>
+                  <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#EF4444' }]} className="btn-glow" onPress={stopRecording}>
                     <Text style={styles.actionBtnText}>Stop & Translate</Text>
                   </TouchableOpacity>
                 )}
@@ -500,7 +588,7 @@ export default function App() {
             )}
 
             {interviewResult && (
-              <View style={styles.card}>
+              <View style={styles.card} className="glass-card">
                 <Text style={styles.cardTitle}>Translation Output</Text>
                 
                 <Text style={styles.langBadge}>Language: {interviewResult.language}</Text>
@@ -523,7 +611,7 @@ export default function App() {
         {activeTab === 'settings' && (
           <View style={styles.tabContent}>
             <Text style={styles.sectionTitle}>Settings</Text>
-            <View style={styles.card}>
+            <View style={styles.card} className="glass-card">
               <Text style={styles.settingLabel}>Backend Server IP/URL</Text>
               <TextInput
                 style={styles.settingInput}
@@ -572,16 +660,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F172A',
+    backgroundColor: '#080C14',
   },
   header: {
     height: 60,
     borderBottomWidth: 1,
-    borderBottomColor: '#1E293B',
+    borderBottomColor: '#20263F',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
+    backgroundColor: '#121624',
   },
   brandContainer: {
     flexDirection: 'row',
@@ -613,12 +702,12 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   card: {
-    backgroundColor: '#1E293B',
+    backgroundColor: '#161B30',
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#334155',
+    borderColor: '#252D4A',
   },
   cardTitle: {
     fontSize: 15,
@@ -909,10 +998,10 @@ const styles = StyleSheet.create({
     lineHeight: 16,
   },
   navBar: {
-    height: 60,
-    backgroundColor: '#1E293B',
+    height: 65,
+    backgroundColor: '#121624',
     borderTopWidth: 1,
-    borderTopColor: '#334155',
+    borderTopColor: '#20263F',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
