@@ -6,6 +6,7 @@ import { Neo4jModule } from './neo4j/neo4j.module';
 import { AuthModule } from './auth/auth.module';
 import { ScannerModule } from './scanner/scanner.module';
 import { InterviewModule } from './interview/interview.module';
+import { WorkflowsModule } from './workflows/workflows.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { InterviewModule } from './interview/interview.module';
     AuthModule,
     ScannerModule,
     InterviewModule,
+    WorkflowsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

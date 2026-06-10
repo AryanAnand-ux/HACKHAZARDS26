@@ -41,7 +41,7 @@ export default function App() {
   
   // Camera & Upload states
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [cameraType] = useState(Camera.Constants.Type.back);
+  const [cameraType] = useState('back');
   const [isScanning, setIsScanning] = useState(false);
   const [scannedData, setScannedData] = useState<any>(null);
   const [scannedRisk, setScannedRisk] = useState<any>(null);
