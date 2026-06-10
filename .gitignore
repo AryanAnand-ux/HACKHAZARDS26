@@ -1,0 +1,26 @@
+# Root Gitignore for VigilNet Monorepo
+
+# Dependency directories
+node_modules/
+backend/node_modules/
+expo-client/node_modules/
+
+# Build outputs
+dist/
+backend/dist/
+expo-client/dist/
+
+# Local env files
+.env
+backend/.env
+expo-client/.env
+
+# Expo local files
+.expo/
+expo-client/.expo/
+
+# IDE and System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
