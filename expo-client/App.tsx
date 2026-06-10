@@ -10,7 +10,7 @@ import {
   TextInput,
   Dimensions,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Camera } from 'expo-camera';
 import { Audio } from 'expo-av';
 import * as ImagePicker from 'expo-image-picker';
@@ -191,7 +191,8 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.brandContainer}>
@@ -479,6 +480,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
     </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
