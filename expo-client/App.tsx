@@ -277,12 +277,15 @@ export default function App() {
     <SafeAreaProvider>
       {Platform.OS === 'web' && (
         <style dangerouslySetInnerHTML={{__html: `
-          @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
-          * {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+          @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+          body, input, button, select, textarea, div, span, p, a {
+            font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          }
+          svg text, .code-font {
+            font-family: 'Fira Code', monospace !important;
           }
           body {
-            background-color: #080C14 !important;
+            background-color: #020617 !important;
             margin: 0;
             padding: 0;
           }
@@ -352,6 +355,12 @@ export default function App() {
             50% { transform: scale(1.08); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
           }
+          @media (prefers-reduced-motion: reduce) {
+            .laser-line, .pulse-record, .glass-card, .btn-glow, .mock-btn-glow {
+              animation: none !important;
+              transition: none !important;
+            }
+          }
         `}} />
       )}
       <SafeAreaView style={styles.container}>
@@ -387,18 +396,18 @@ export default function App() {
                   <Circle cx="50" cy="50" r="40" stroke="url(#gaugeGrad)" strokeWidth="10" fill="none" strokeDasharray="100 250" />
                 </Svg>
                 <View style={styles.gaugeTextContainer}>
-                  <Text style={styles.gaugeNumber}>84%</Text>
+                  <Text style={[styles.gaugeNumber, styles.codeFont]}>84%</Text>
                   <Text style={styles.gaugeLabel}>Compliant Suppliers</Text>
                 </View>
               </View>
 
               <View style={styles.statsGrid}>
                 <View style={styles.statBox}>
-                  <Text style={styles.statVal}>412</Text>
+                  <Text style={[styles.statVal, styles.codeFont]}>412</Text>
                   <Text style={styles.statLbl}>Audited Facilities</Text>
                 </View>
                 <View style={styles.statBox}>
-                  <Text style={[styles.statVal, { color: '#EF4444' }]}>3</Text>
+                  <Text style={[styles.statVal, styles.codeFont, { color: '#EF4444' }]}>3</Text>
                   <Text style={styles.statLbl}>Active Violations</Text>
                 </View>
               </View>
@@ -459,14 +468,14 @@ export default function App() {
               <View style={styles.card} className="glass-card">
                 <Text style={styles.cardTitle}>Parsed Manifest Data</Text>
                 <View style={styles.metaRow}><Text style={styles.metaLabel}>Supplier:</Text><Text style={styles.metaVal}>{scannedData.companyName}</Text></View>
-                <View style={styles.metaRow}><Text style={styles.metaLabel}>Reg No:</Text><Text style={styles.metaVal}>{scannedData.registrationNo}</Text></View>
+                <View style={styles.metaRow}><Text style={styles.metaLabel}>Reg No:</Text><Text style={[styles.metaVal, styles.codeFont]}>{scannedData.registrationNo}</Text></View>
                 <View style={styles.metaRow}><Text style={styles.metaLabel}>Material:</Text><Text style={styles.metaVal}>{scannedData.materialType}</Text></View>
                 <View style={styles.metaRow}><Text style={styles.metaLabel}>Signatory:</Text><Text style={styles.metaVal}>{scannedData.signatory}</Text></View>
                 
                 <View style={[styles.riskBanner, scannedRisk.riskScore > 50 ? styles.riskHigh : styles.riskLow]}>
                   <AlertTriangle color="#FFFFFF" size={24} />
                   <View>
-                    <Text style={styles.riskBannerTitle}>Compliance Risk: {scannedRisk.riskScore}%</Text>
+                    <Text style={[styles.riskBannerTitle, styles.codeFont]}>Compliance Risk: {scannedRisk.riskScore}%</Text>
                     <Text style={styles.riskBannerText}>{scannedRisk.message}</Text>
                   </View>
                 </View>
@@ -523,10 +532,10 @@ export default function App() {
                   return (
                     <G key={node.id}>
                       <Circle cx={x} cy={y} r="18" fill="#1E293B" stroke={color} strokeWidth="3" />
-                      <SvgText x={x} y={y + 32} fill="#F8FAFC" fontSize="10" textAnchor="middle" fontWeight="bold">
+                      <SvgText x={x} y={y + 32} fill="#F8FAFC" fontSize="10" textAnchor="middle" fontWeight="bold" fontFamily={Platform.OS === 'web' ? 'Fira Code' : 'monospace'}>
                         {node.name.split(' ')[0]}
                       </SvgText>
-                      <SvgText x={x} y={y + 42} fill="#94A3B8" fontSize="8" textAnchor="middle">
+                      <SvgText x={x} y={y + 42} fill="#94A3B8" fontSize="8" textAnchor="middle" fontFamily={Platform.OS === 'web' ? 'Fira Code' : 'monospace'}>
                         {node.label}
                       </SvgText>
                     </G>
@@ -601,7 +610,7 @@ export default function App() {
 
                 <View style={styles.complianceNote}>
                   <CheckCircle color="#10B981" size={18} />
-                  <Text style={styles.complianceNoteText}>Linked successfully to Audit Report #4928</Text>
+                  <Text style={styles.complianceNoteText}>Linked successfully to Audit Report <Text style={[styles.codeFont, { fontWeight: 'bold' }]}>#4928</Text></Text>
                 </View>
               </View>
             )}
@@ -1018,5 +1027,8 @@ const styles = StyleSheet.create({
   navTextActive: {
     color: '#10B981',
     fontWeight: 'bold',
+  },
+  codeFont: {
+    fontFamily: Platform.OS === 'web' ? 'Fira Code' : 'monospace',
   },
 });
