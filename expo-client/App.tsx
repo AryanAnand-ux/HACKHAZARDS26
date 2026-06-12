@@ -349,8 +349,12 @@ export default function App() {
             letter-spacing: 2px;
           }
           body {
-            background-color: #030604 !important;
-            color: #00FF66 !important;
+            background-color: #F8FAFC !important;
+            background-image: 
+              linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px) !important;
+            background-size: 20px 20px !important;
+            color: #0F172A !important;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -362,9 +366,9 @@ export default function App() {
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background: linear-gradient(rgba(15, 23, 42, 0.02) 50%, transparent 50%);
             z-index: 9999;
-            background-size: 100% 4px, 4px 100%;
+            background-size: 100% 4px;
             pointer-events: none;
             opacity: 0.85;
           }
@@ -373,7 +377,7 @@ export default function App() {
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.7) 100%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0) 65%, rgba(15, 23, 42, 0.08) 100%);
             z-index: 10000;
             pointer-events: none;
           }
@@ -383,94 +387,97 @@ export default function App() {
             width: 100vw;
             height: 100vh;
             background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E') repeat;
-            opacity: 0.05;
+            opacity: 0.03;
             pointer-events: none;
             z-index: 9998;
           }
-          /* Premium cyberpunk glass card with corner brackets */
+          /* Premium cyberpunk glass card with corner brackets - Light Theme */
           .glass-card {
             position: relative;
-            background: #090E0A !important;
-            border: 1px solid rgba(0, 255, 102, 0.25) !important;
+            background: #FFFFFF !important;
+            border: 1px solid #0F172A !important;
             border-radius: 4px !important;
-            box-shadow: inset 0 0 12px rgba(0, 255, 102, 0.08), 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+            box-shadow: 3px 3px 0px #0F172A !important;
             transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           }
           .glass-card::before {
             content: "";
             position: absolute;
             top: -2px; left: -2px; width: 8px; height: 8px;
-            border-top: 2px solid #00FF66; border-left: 2px solid #00FF66;
+            border-top: 2px solid #0F172A; border-left: 2px solid #0F172A;
             pointer-events: none;
           }
           .glass-card::after {
             content: "";
             position: absolute;
             bottom: -2px; right: -2px; width: 8px; height: 8px;
-            border-bottom: 2px solid #00FF66; border-right: 2px solid #00FF66;
+            border-bottom: 2px solid #0F172A; border-right: 2px solid #0F172A;
             pointer-events: none;
           }
           .glass-card:hover {
-            transform: translateY(-2px);
-            box-shadow: inset 0 0 15px rgba(0, 255, 102, 0.15), 0 8px 25px rgba(0, 255, 102, 0.2) !important;
-            border-color: rgba(0, 255, 102, 0.5) !important;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #0052FF !important;
+            border-color: #0052FF !important;
           }
+          .glass-card:hover::before { border-color: #0052FF !important; }
+          .glass-card:hover::after { border-color: #0052FF !important; }
+
           .alert-hover {
-            border-color: rgba(255, 59, 48, 0.25) !important;
-            background: rgba(255, 59, 48, 0.04) !important;
-            box-shadow: inset 0 0 12px rgba(255, 59, 48, 0.08), 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+            border-color: #FF3B30 !important;
+            background: #FFF5F5 !important;
+            box-shadow: 3px 3px 0px #FF3B30 !important;
           }
           .alert-hover::before { border-color: #FF3B30 !important; }
           .alert-hover::after { border-color: #FF3B30 !important; }
           .alert-hover:hover {
-            box-shadow: inset 0 0 15px rgba(255, 59, 48, 0.15), 0 8px 25px rgba(255, 59, 48, 0.2) !important;
-            border-color: rgba(255, 59, 48, 0.5) !important;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #FF3B30 !important;
           }
           .info-hover {
-            border-color: rgba(0, 255, 102, 0.25) !important;
-            background: rgba(0, 255, 102, 0.04) !important;
-            box-shadow: inset 0 0 12px rgba(0, 255, 102, 0.08), 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+            border-color: #00A854 !important;
+            background: #F0FDF4 !important;
+            box-shadow: 3px 3px 0px #00A854 !important;
           }
-          .info-hover::before { border-color: #00FF66 !important; }
-          .info-hover::after { border-color: #00FF66 !important; }
+          .info-hover::before { border-color: #00A854 !important; }
+          .info-hover::after { border-color: #00A854 !important; }
           .info-hover:hover {
-            box-shadow: inset 0 0 15px rgba(0, 255, 102, 0.15), 0 8px 25px rgba(0, 255, 102, 0.2) !important;
-            border-color: rgba(0, 255, 102, 0.5) !important;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #00A854 !important;
           }
           .btn-glow {
             transition: all 0.2s ease-in-out;
-            border: 1px solid #00FF66 !important;
+            border: 1px solid #0F172A !important;
             border-radius: 4px !important;
-            box-shadow: 0 0 8px rgba(0, 255, 102, 0.2);
-            background: #090E0A !important;
+            box-shadow: 2px 2px 0px #0F172A;
+            background: #FFFFFF !important;
           }
           .btn-glow:hover {
-            background: #00FF66 !important;
-            color: #030604 !important;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
-            transform: translateY(-1px);
+            background: #0F172A !important;
+            color: #FFFFFF !important;
+            box-shadow: 3px 3px 0px #0052FF;
+            transform: translate(-1px, -1px);
           }
           .btn-glow:active {
-            transform: translateY(1px);
+            transform: translate(1px, 1px);
           }
           .btn-glow:hover * {
-            color: #030604 !important;
+            color: #FFFFFF !important;
           }
           .mock-btn-glow {
             transition: all 0.2s ease-in-out;
             border: 1px solid #FFB300 !important;
             border-radius: 4px !important;
-            box-shadow: 0 0 8px rgba(255, 179, 0, 0.2);
-            background: #090E0A !important;
+            box-shadow: 2px 2px 0px #FFB300;
+            background: #FFFFFF !important;
           }
           .mock-btn-glow:hover {
             background: #FFB300 !important;
-            color: #030604 !important;
-            box-shadow: 0 0 15px rgba(255, 179, 0, 0.5);
-            transform: translateY(-1px);
+            color: #0F172A !important;
+            box-shadow: 3px 3px 0px #0F172A;
+            transform: translate(-1px, -1px);
           }
           .mock-btn-glow:hover * {
-            color: #030604 !important;
+            color: #0F172A !important;
           }
           @keyframes scanLaser {
             0% { top: 0%; opacity: 0.8; }
@@ -482,8 +489,8 @@ export default function App() {
             left: 0;
             width: 100%;
             height: 3px;
-            background: #00FF66;
-            box-shadow: 0 0 8px #00FF66, 0 0 15px #00FF66;
+            background: #0052FF;
+            box-shadow: 0 0 8px #0052FF, 0 0 15px #0052FF;
             animation: scanLaser 3s infinite linear;
             z-index: 10;
           }
@@ -517,15 +524,15 @@ export default function App() {
             height: 50px;
             width: 200px;
             margin: 16px auto 0 auto;
-            background: rgba(0, 0, 0, 0.3);
+            background: #F1F5F9;
             border-radius: 4px;
-            border: 1px solid rgba(0, 255, 102, 0.2);
+            border: 1px solid #CBD5E1;
             padding: 10px;
           }
           .osc-bar {
             width: 4px;
             height: 100%;
-            background-color: #00FF66;
+            background-color: #0052FF;
             border-radius: 2px;
             transform-origin: center;
             animation: soundwave 1s ease-in-out infinite;
@@ -548,7 +555,7 @@ export default function App() {
           .blink-dot {
             width: 8px;
             height: 8px;
-            background-color: #00FF66;
+            background-color: #0052FF;
             border-radius: 50%;
             animation: blink 1s infinite;
           }
@@ -564,13 +571,13 @@ export default function App() {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.brandContainer}>
-          <ShieldAlert color="#00FF66" size={24} />
-          <Text style={[styles.brandText, styles.vtFont]} className="brand-text-style">VIGIL<Text style={{ color: '#00FF66' }}>NET</Text></Text>
+          <ShieldAlert color="#0052FF" size={24} />
+          <Text style={[styles.brandText, styles.vtFont]} className="brand-text-style">VIGIL<Text style={{ color: '#0052FF' }}>NET</Text></Text>
         </View>
         <View style={styles.headerRight}>
           <Text style={[styles.headerStatus, styles.codeFont]}>PORT_8082 // SECURE_CON</Text>
           <TouchableOpacity onPress={() => setActiveTab('settings')} style={{ marginLeft: 12 }}>
-            <Settings color="#00FF66" size={20} />
+            <Settings color="#0F172A" size={20} />
           </TouchableOpacity>
         </View>
       </View>
@@ -653,9 +660,9 @@ export default function App() {
                 </View>
 
                 <View style={[styles.card, styles.infoCard]} className="glass-card info-hover">
-                  <CheckCircle color="#00FF66" size={24} />
+                  <CheckCircle color="#00A854" size={24} />
                   <View style={styles.alertTextContainer}>
-                    <Text style={[styles.alertTitle, { color: '#00FF66' }]}>Audit Complete: Ningbo Co</Text>
+                    <Text style={[styles.alertTitle, { color: '#00A854' }]}>Audit Complete: Ningbo Co</Text>
                     <Text style={styles.alertDesc}>Supplier cleared of all entity-relationship risks.</Text>
                   </View>
                 </View>
@@ -677,7 +684,7 @@ export default function App() {
               <View style={styles.hudBottomLeft}><Text style={[styles.hudText, styles.codeFont]}>FILTER: HIST_EQ</Text></View>
               <View style={styles.hudBottomRight}><Text style={[styles.hudText, styles.codeFont]}>FOCUS: CONT</Text></View>
 
-              <FileText color="#00FF66" size={56} style={{ opacity: 0.8 }} />
+              <FileText color="#0052FF" size={56} style={{ opacity: 0.8 }} />
               <Text style={[styles.cameraText, styles.codeFont]}>MANIFEST SCANNER ACTIVE</Text>
               
               <View style={styles.scanActions}>
@@ -750,7 +757,7 @@ export default function App() {
                       y1={sy}
                       x2={tx}
                       y2={ty}
-                      stroke={isViolating ? '#EF4444' : '#00FF66'}
+                      stroke={isViolating ? '#EF4444' : '#0052FF'}
                       strokeWidth="2"
                       strokeDasharray={isViolating ? '4 4' : '0'}
                     />
@@ -760,14 +767,14 @@ export default function App() {
                 {/* Nodes */}
                 {graphData.nodes.map((node: any) => {
                   const { x, y } = getNodeCoords(node.id);
-                  const color = node.risk === 100 ? '#EF4444' : node.risk >= 80 ? '#F97316' : node.risk >= 50 ? '#EAB308' : '#00FF66';
+                  const color = node.risk === 100 ? '#EF4444' : node.risk >= 80 ? '#F97316' : node.risk >= 50 ? '#EAB308' : '#0052FF';
                   const title = node.name.split(' ')[0];
 
                   return (
                     <G key={node.id}>
                       {/* Background chip */}
-                      <Circle cx={x} cy={y} r="26" fill="#090E0A" stroke={color} strokeWidth="1.5" />
-                      <Circle cx={x} cy={y} r="22" fill="#090E0A" stroke={color} strokeWidth="0.5" strokeDasharray="2 2" />
+                      <Circle cx={x} cy={y} r="26" fill="#FFFFFF" stroke={color} strokeWidth="1.5" />
+                      <Circle cx={x} cy={y} r="22" fill="#FFFFFF" stroke={color} strokeWidth="0.5" strokeDasharray="2 2" />
                       
                       {/* Risk / Sanction Badge */}
                       <SvgText x={x} y={y - 32} fill={color} fontSize="8" textAnchor="middle" fontWeight="bold" fontFamily={Platform.OS === 'web' ? 'Fira Code' : 'monospace'}>
@@ -775,12 +782,12 @@ export default function App() {
                       </SvgText>
 
                       {/* Node Name */}
-                      <SvgText x={x} y={y + 4} fill="#FFFFFF" fontSize="9" textAnchor="middle" fontWeight="bold" fontFamily={Platform.OS === 'web' ? 'Fira Code' : 'monospace'}>
+                      <SvgText x={x} y={y + 4} fill="#0F172A" fontSize="9" textAnchor="middle" fontWeight="bold" fontFamily={Platform.OS === 'web' ? 'Fira Code' : 'monospace'}>
                         {title}
                       </SvgText>
 
                       {/* Node Label */}
-                      <SvgText x={x} y={y + 38} fill="#94A3B8" fontSize="8" textAnchor="middle" fontFamily={Platform.OS === 'web' ? 'Fira Code' : 'monospace'}>
+                      <SvgText x={x} y={y + 38} fill="#64748B" fontSize="8" textAnchor="middle" fontFamily={Platform.OS === 'web' ? 'Fira Code' : 'monospace'}>
                         {node.label}
                       </SvgText>
                     </G>
@@ -800,7 +807,7 @@ export default function App() {
                 <Text style={styles.legendText}>Scanned Supplier - Linked to Sanction (Risk 80%)</Text>
               </View>
               <View style={styles.legendRow}>
-                <View style={[styles.legendDot, { backgroundColor: '#10B981' }]} />
+                <View style={[styles.legendDot, { backgroundColor: '#0052FF' }]} />
                 <Text style={styles.legendText}>Compliant Node (Risk &lt; 20%)</Text>
               </View>
             </View>
@@ -814,7 +821,7 @@ export default function App() {
 
             <View style={styles.recordBox} className="glass-card">
               <View className={isRecording ? "pulse-record" : ""}>
-                <Mic color={isRecording ? '#FF3B30' : '#00FF66'} size={56} />
+                <Mic color={isRecording ? '#FF3B30' : '#0052FF'} size={56} />
               </View>
               
               {isRecording && (
@@ -838,8 +845,8 @@ export default function App() {
 
               <View style={styles.recordActions}>
                 {!isRecording ? (
-                  <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#00FF66' }]} className="btn-glow" onPress={startRecording}>
-                    <Text style={[styles.actionBtnText, { color: '#030604' }]}>Start Recording</Text>
+                  <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#0052FF' }]} className="btn-glow" onPress={startRecording}>
+                    <Text style={[styles.actionBtnText, { color: '#FFFFFF' }]}>Start Recording</Text>
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity style={[styles.actionBtn, { backgroundColor: '#FF3B30' }]} className="btn-glow" onPress={stopRecording}>
@@ -869,7 +876,7 @@ export default function App() {
                 <Text style={styles.translatedText}>{interviewResult.translation}</Text>
 
                 <View style={styles.complianceNote}>
-                  <CheckCircle color="#00FF66" size={18} />
+                  <CheckCircle color="#00A854" size={18} />
                   <Text style={styles.complianceNoteText}>Linked successfully to Audit Report <Text style={[styles.codeFont, { fontWeight: 'bold' }]}>#4928</Text></Text>
                 </View>
               </View>
@@ -889,7 +896,7 @@ export default function App() {
                   value={apiUrl}
                   onChangeText={setApiUrl}
                   placeholder="http://localhost:3000"
-                  placeholderTextColor="#1E3F25"
+                  placeholderTextColor="#94A3B8"
                 />
               </View>
               <Text style={[styles.settingDesc, styles.codeFont]}>
@@ -905,22 +912,22 @@ export default function App() {
       {/* Navigation Footer */}
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('dashboard')}>
-          <Compass color={activeTab === 'dashboard' ? '#00FF66' : '#94A3B8'} size={22} />
+          <Compass color={activeTab === 'dashboard' ? '#0052FF' : '#94A3B8'} size={22} />
           <Text style={[styles.navText, activeTab === 'dashboard' && styles.navTextActive]}>Home</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('scan')}>
-          <Scan color={activeTab === 'scan' ? '#00FF66' : '#94A3B8'} size={22} />
+          <Scan color={activeTab === 'scan' ? '#0052FF' : '#94A3B8'} size={22} />
           <Text style={[styles.navText, activeTab === 'scan' && styles.navTextActive]}>Scan</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('graph')}>
-          <TrendingUp color={activeTab === 'graph' ? '#00FF66' : '#94A3B8'} size={22} />
+          <TrendingUp color={activeTab === 'graph' ? '#0052FF' : '#94A3B8'} size={22} />
           <Text style={[styles.navText, activeTab === 'graph' && styles.navTextActive]}>Graph</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('interview')}>
-          <Mic color={activeTab === 'interview' ? '#00FF66' : '#94A3B8'} size={22} />
+          <Mic color={activeTab === 'interview' ? '#0052FF' : '#94A3B8'} size={22} />
           <Text style={[styles.navText, activeTab === 'interview' && styles.navTextActive]}>Talk</Text>
         </TouchableOpacity>
       </View>
@@ -932,17 +939,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#030604',
+    backgroundColor: '#F8FAFC',
   },
   header: {
     height: 56,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0, 255, 102, 0.2)',
+    borderBottomColor: '#0F172A',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    backgroundColor: '#030604',
+    backgroundColor: '#FFFFFF',
   },
   brandContainer: {
     flexDirection: 'row',
@@ -951,7 +958,7 @@ const styles = StyleSheet.create({
   brandText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#0F172A',
     marginLeft: 8,
     letterSpacing: 2,
   },
@@ -960,7 +967,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerStatus: {
-    color: '#00FF66',
+    color: '#0052FF',
     fontSize: 9,
     opacity: 0.7,
     letterSpacing: 0.5,
@@ -968,9 +975,9 @@ const styles = StyleSheet.create({
   diagnosticsHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#090D0B',
+    backgroundColor: '#F1F5F9',
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0, 255, 102, 0.15)',
+    borderBottomColor: '#E2E8F0',
     paddingHorizontal: 16,
     paddingVertical: 5,
   },
@@ -979,7 +986,7 @@ const styles = StyleSheet.create({
     fontSize: 8,
   },
   diagActive: {
-    color: '#00FF66',
+    color: '#0F172A',
     fontWeight: 'bold',
   },
   scrollContent: {
@@ -991,7 +998,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#0F172A',
     marginBottom: 8,
     marginTop: 12,
     letterSpacing: 1,
@@ -1002,34 +1009,34 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   card: {
-    backgroundColor: '#090D0B',
+    backgroundColor: '#FFFFFF',
     borderRadius: 4,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 102, 0.25)',
+    borderColor: '#0F172A',
   },
   cardTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#F8FAFC',
+    color: '#0F172A',
     marginBottom: 12,
     letterSpacing: 0.5,
   },
   consoleCard: {
-    backgroundColor: '#090D0B',
+    backgroundColor: '#F1F5F9',
     borderRadius: 4,
     padding: 12,
     marginBottom: 16,
     height: 140,
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 102, 0.25)',
+    borderColor: '#0F172A',
   },
   consoleScroll: {
     flex: 1,
   },
   consoleLogText: {
-    color: '#00FF66',
+    color: '#0F172A',
     fontSize: 10,
     lineHeight: 14,
     marginBottom: 2,
@@ -1041,11 +1048,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 6,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0, 255, 102, 0.15)',
+    borderBottomColor: '#CBD5E1',
     paddingBottom: 4,
   },
   consoleTitle: {
-    color: '#00FF66',
+    color: '#0F172A',
     fontSize: 10,
     fontWeight: 'bold',
     letterSpacing: 1,
@@ -1054,7 +1061,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#00FF66',
+    backgroundColor: '#0052FF',
   },
   gaugeContainer: {
     alignItems: 'center',
@@ -1070,7 +1077,7 @@ const styles = StyleSheet.create({
   gaugeNumber: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
   gaugeLabel: {
     fontSize: 10,
@@ -1081,7 +1088,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 12,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(0, 255, 102, 0.2)',
+    borderTopColor: '#E2E8F0',
     paddingTop: 12,
   },
   statBox: {
@@ -1091,7 +1098,7 @@ const styles = StyleSheet.create({
   statVal: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
   statLbl: {
     fontSize: 10,
@@ -1103,14 +1110,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: '#FF3B30',
     borderWidth: 1,
-    backgroundColor: 'rgba(255, 59, 48, 0.05)',
+    backgroundColor: '#FFF5F5',
   },
   infoCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#00FF66',
+    borderColor: '#00A854',
     borderWidth: 1,
-    backgroundColor: 'rgba(0, 255, 102, 0.05)',
+    backgroundColor: '#F0FDF4',
   },
   alertTextContainer: {
     marginLeft: 12,
@@ -1123,15 +1130,15 @@ const styles = StyleSheet.create({
   },
   alertDesc: {
     fontSize: 11,
-    color: '#E2E8F0',
+    color: '#0F172A',
     marginTop: 2,
   },
   cameraBox: {
     height: 220,
-    backgroundColor: '#090D0B',
+    backgroundColor: '#FFFFFF',
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 102, 0.3)',
+    borderColor: '#0F172A',
     borderStyle: 'dashed',
     alignItems: 'center',
     justifyContent: 'center',
@@ -1139,7 +1146,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   cameraText: {
-    color: '#94A3B8',
+    color: '#0F172A',
     marginTop: 12,
     fontSize: 12,
     letterSpacing: 1,
@@ -1150,7 +1157,7 @@ const styles = StyleSheet.create({
     zIndex: 15,
   },
   actionBtn: {
-    backgroundColor: '#10B981',
+    backgroundColor: '#0052FF',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
@@ -1173,7 +1180,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   loadingText: {
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 12,
     fontSize: 11,
     textAlign: 'center',
@@ -1183,14 +1190,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 6,
     borderBottomWidth: 1,
-    borderBottomColor: '#1E293B',
+    borderBottomColor: '#E2E8F0',
   },
   metaLabel: {
     color: '#64748B',
     fontSize: 12,
   },
   metaVal: {
-    color: '#FFFFFF',
+    color: '#0F172A',
     fontWeight: 'bold',
     fontSize: 12,
   },
@@ -1205,7 +1212,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF3B30',
   },
   riskLow: {
-    backgroundColor: '#00FF66',
+    backgroundColor: '#00A854',
   },
   riskBannerTitle: {
     color: '#FFFFFF',
@@ -1221,25 +1228,25 @@ const styles = StyleSheet.create({
     width: width - 90,
   },
   viewGraphBtn: {
-    backgroundColor: '#334155',
+    backgroundColor: '#F1F5F9',
     alignItems: 'center',
     padding: 12,
     borderRadius: 4,
     marginTop: 12,
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 102, 0.2)',
+    borderColor: '#0F172A',
   },
   viewGraphText: {
-    color: '#FFFFFF',
+    color: '#0F172A',
     fontWeight: 'bold',
     fontSize: 12,
     letterSpacing: 0.5,
   },
   graphBox: {
-    backgroundColor: '#030604',
+    backgroundColor: '#FFFFFF',
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 102, 0.25)',
+    borderColor: '#0F172A',
     padding: 16,
     alignItems: 'center',
     justifyContent: 'center',
@@ -1257,21 +1264,21 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   legendText: {
-    color: '#E2E8F0',
+    color: '#0F172A',
     fontSize: 11,
   },
   recordBox: {
     height: 200,
-    backgroundColor: '#090D0B',
+    backgroundColor: '#FFFFFF',
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 102, 0.25)',
+    borderColor: '#0F172A',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
   },
   recordText: {
-    color: '#FFFFFF',
+    color: '#0F172A',
     fontSize: 12,
     fontWeight: 'bold',
     marginTop: 12,
@@ -1282,8 +1289,8 @@ const styles = StyleSheet.create({
   },
   langBadge: {
     alignSelf: 'flex-start',
-    backgroundColor: '#334155',
-    color: '#F8FAFC',
+    backgroundColor: '#E2E8F0',
+    color: '#0F172A',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 2,
@@ -1299,14 +1306,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   transcriptText: {
-    color: '#E2E8F0',
+    color: '#0F172A',
     fontSize: 13,
     fontStyle: 'italic',
     marginTop: 4,
     marginBottom: 12,
   },
   translatedText: {
-    color: '#00FF66',
+    color: '#0052FF',
     fontSize: 14,
     fontWeight: 'bold',
     marginTop: 4,
@@ -1318,7 +1325,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: '#1E293B',
+    borderTopColor: '#E2E8F0',
   },
   complianceNoteText: {
     color: '#64748B',
@@ -1332,23 +1339,23 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   settingInput: {
-    color: '#FFFFFF',
+    color: '#0F172A',
     fontSize: 13,
     flex: 1,
     height: 36,
     paddingHorizontal: 4,
   },
   settingDesc: {
-    color: '#475569',
+    color: '#64748B',
     fontSize: 10,
     marginTop: 8,
     lineHeight: 14,
   },
   navBar: {
     height: 60,
-    backgroundColor: '#030604',
+    backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
-    borderTopColor: 'rgba(0, 255, 102, 0.2)',
+    borderTopColor: '#0F172A',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -1363,7 +1370,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   navTextActive: {
-    color: '#00FF66',
+    color: '#0052FF',
     fontWeight: 'bold',
   },
   codeFont: {
@@ -1382,14 +1389,14 @@ const styles = StyleSheet.create({
   terminalPromptContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#030604',
+    backgroundColor: '#F8FAFC',
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 102, 0.3)',
+    borderColor: '#0F172A',
     borderRadius: 4,
     paddingHorizontal: 10,
   },
   promptSymbol: {
-    color: '#00FF66',
+    color: '#0052FF',
     fontSize: 13,
   },
   hudTopLeft: {
@@ -1413,7 +1420,7 @@ const styles = StyleSheet.create({
     right: 10,
   },
   hudText: {
-    color: '#00FF66',
+    color: '#0052FF',
     fontSize: 8,
     opacity: 0.6,
   },
